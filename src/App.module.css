@@ -1,0 +1,24 @@
+.app {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: url("./images/lightSnow.jpg");
+    background-attachment: fixed;
+    background-size: cover;
+    overflow: hidden;
+}
+
+.app::before {
+    position: absolute;
+    content: "";
+    background: inherit;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    filter: blur(10px);
+    filter: grayscale(50);
+    margin: -20px;
+}
