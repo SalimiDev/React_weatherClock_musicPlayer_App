@@ -5,7 +5,10 @@ import MainTemplate from "./components/MainTemplate";
 
 function App() {
   return (
-    <div className={styles.app}>
+    <div
+      className={styles.app}
+    
+      >
       <MainTemplate />
     </div>
   );

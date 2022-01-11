@@ -4,10 +4,11 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: url("./images/lightSnow.jpg");
+    background: url("./images/test.jpg");
     background-attachment: fixed;
     background-size: cover;
     overflow: hidden;
+
 }
 
 .app::before {
@@ -19,6 +20,6 @@
     left: 0;
     right: 0;
     filter: blur(10px);
-    filter: grayscale(50);
+    filter: grayscale(1);
     margin: -20px;
 }
