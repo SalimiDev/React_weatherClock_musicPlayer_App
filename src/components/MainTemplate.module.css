@@ -4,7 +4,6 @@
     height: fit-content;
     display: flex;
     flex-direction: row;
-    background: url("../images/test.jpg");
     background-attachment: fixed;
     background-size: cover;
     border-radius: 3px;

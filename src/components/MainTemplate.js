@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import styles from "./MainTemplate.module.css";
 import { Icon } from "@iconify/react";
+import { background } from "./background";
 //Validation
 import { inputValidates } from "../validate/validate";
 
@@ -45,7 +46,11 @@ const MainTemplate = () => {
 
   return (
     <div>
-      <div className={styles.mainContainer}>
+      <div
+        className={styles.mainContainer}
+        style={{
+          backgroundImage: `url(${background(WeatherData).city})`,
+        }}>
         <div className={styles.clockWeatherContainer}>
           <div className={styles.clock}>Clock</div>
 
@@ -59,8 +64,11 @@ const MainTemplate = () => {
           </div>
           <p>{StationData.errorMassage}</p>
           <div className={styles.inputContainer}>
+            <p>{Errors.city && Errors.city}</p>
             <p>{Errors.status}</p>
+
             <p>{Error.citySearch && Error.citySearch}</p>
+
             <input
               className={styles.searchBox}
               type="text"
