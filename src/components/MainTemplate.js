@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import styles from "./MainTemplate.module.css";
 import { Icon } from "@iconify/react";
+//Validation
+import { inputValidates } from "../validate/validate";
 
 //Components
 import Weather from "./Weather";
@@ -9,7 +11,8 @@ import Weather from "./Weather";
 import { weatherContext } from "../context/ManageContext";
 
 const MainTemplate = () => {
-  const { WeatherData, setWeatherData } = useContext(weatherContext);
+  const [Error, setError] = useState({});
+  const { WeatherData, setWeatherData, Errors } = useContext(weatherContext);
   const [StationData, setStationData] = useState({});
 
   useEffect(() => {
@@ -35,6 +38,7 @@ const MainTemplate = () => {
   const clickHandler = async (event) => {
     event.preventDefault();
     setWeatherData({ cityName: citySearch });
+    setError(inputValidates(StationData));
   };
 
   const { city, temp, icon, descrip, citySearch } = StationData;
@@ -55,6 +59,8 @@ const MainTemplate = () => {
           </div>
           <p>{StationData.errorMassage}</p>
           <div className={styles.inputContainer}>
+            <p>{Errors.status}</p>
+            <p>{Error.citySearch && Error.citySearch}</p>
             <input
               className={styles.searchBox}
               type="text"
