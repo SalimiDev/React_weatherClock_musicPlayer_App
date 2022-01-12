@@ -4,7 +4,12 @@
     color: white;
     width: 100%;
     font-size: 2vw;
+    text-shadow: 0.1vw 0.1vw 0vw #030303, 0.2vw 0.2vw 0vw #000000, 0.3vw 0.4vw 0vw #000000, 0.35vw 0.45vw 10vw #000000a6
+}
 
+.city {
+    font-size: 3.5vw;
+    margin-left: -7px;
 }
 
 .temp {
@@ -12,9 +17,19 @@
     font-size: 5vw;
 }
 
-.cityClenderContainer {
-    padding-right: 10px;
+.iconContainer {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    left: 21.5vw;
+}
 
+.iconContainer h5 {
+    width: 15vw;
+}
 
-
+.weatherIcon {
+    height: 5.5vw;
+    text-shadow: 0.5vw 0.6vw 0.5vw #000000;
+    filter: drop-shadow(2px 4px 6px black);
 }

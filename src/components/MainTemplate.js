@@ -12,10 +12,10 @@ import Weather from "./Weather";
 import { weatherContext } from "../context/ManageContext";
 
 const MainTemplate = () => {
+
   const [Error, setError] = useState({});
   const { WeatherData, setWeatherData, Errors } = useContext(weatherContext);
   const [StationData, setStationData] = useState({});
-
   useEffect(() => {
     setStationData({
       cod: WeatherData.cod,
@@ -52,7 +52,7 @@ const MainTemplate = () => {
           backgroundImage: `url(${background(WeatherData).city})`,
         }}>
         <div className={styles.clockWeatherContainer}>
-          <div className={styles.clock}>Clock</div>
+          <div className={styles.clock}>clock</div>
 
           <div className={styles.weather}>
             <Weather

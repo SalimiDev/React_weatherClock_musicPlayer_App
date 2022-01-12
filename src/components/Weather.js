@@ -1,6 +1,10 @@
 import React, { useContext } from "react";
 import styles from "./Weather.module.css";
+//Dynamic background component
 import { background } from "./background";
+//Components
+import MiniTime from "./MiniTime";
+//Context
 import { weatherContext } from "../context/ManageContext";
 
 const Weather = (props) => {
@@ -9,20 +13,18 @@ const Weather = (props) => {
   return (
     <div className={styles.container}>
       <h1 className={styles.temp}>{temp}&deg;</h1>
-      <div className={styles.cityClenderContainer}>
+      <div className={styles.cityTimeContainer}>
         <h2 className={styles.city}>{city}</h2>
-        <div className={styles.clender}>Time and clender</div>
+        <MiniTime />
       </div>
-      <div>
+      <div className={styles.iconContainer}>
         <img
           className={styles.weatherIcon}
           src={background(WeatherData).icon}
           alt="weather"
-          style={{ height: "55px" }}
         />
+        <h5>{descrip}</h5>
       </div>
-
-      <div>{descrip}</div>
     </div>
   );
 };

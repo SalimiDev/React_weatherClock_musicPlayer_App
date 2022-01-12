@@ -11,7 +11,6 @@
     filter: drop-shadow(2px 4px 6px black);
     box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2);
     transition: all 1s ease-out;
-
 }
 
 .mainContainer::before {
@@ -25,10 +24,7 @@
     filter: blur(20px);
     margin: -20px;
     box-shadow: inset 0 0 30px 0px rgb(255, 255, 255, .5);
-
-
 }
-
 
 .clockWeatherContainer {
     position: relative;
@@ -38,7 +34,6 @@
     z-index: 1;
 }
 
-
 .inputContainer {
     position: absolute;
     bottom: 0vh;
@@ -46,13 +41,11 @@
     width: 100%;
     display: flex;
     justify-content: center;
-
 }
 
 .searchBox {
     text-align: center;
     width: 13vw;
-    height: 4.3vh;
     font-size: 1.3vw;
     background: inherit;
     color: white;
@@ -83,7 +76,6 @@
 .searchButton:hover {
     color: yellow;
     font-size: 2vw;
-
 }
 
 .clock {
@@ -94,18 +86,14 @@
 .weather {
     position: absolute;
     bottom: 10%;
-    left: 10%;
+    left: 6%;
 }
-
 
 .musicAppContainer {
     width: 25vw;
     height: 70vh;
     z-index: 1;
     box-shadow: 0 0 2rem 5px rgba(0, 0, 0, 0.445);
-
-
-
 }
 
 p {

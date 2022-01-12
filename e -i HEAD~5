@@ -1,0 +1,29 @@
+[33mcommit d16ed20ce4d9be11f1735a3d89f1aa4a5c17af38[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: Mehdi Salimi <Salimi.Devop@gmail.com>
+Date:   Tue Jan 11 14:01:23 2022 +0330
+
+    feat:add dynamic background and weather icon
+
+[33mcommit dc5c6905d7ead3d98ce3421841293d59c90866fe[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: Mehdi Salimi <Salimi.Devop@gmail.com>
+Date:   Tue Jan 11 13:09:06 2022 +0330
+
+    add validation for weather Api and weather search input
+
+[33mcommit c73aa83dbcfbf7d31af052a5f96b38037ffa1923[m
+Author: Mehdi Salimi <Salimi.Devop@gmail.com>
+Date:   Tue Jan 11 12:25:53 2022 +0330
+
+    build:Create weather app part and set weather Api & manage Api data with context
+
+[33mcommit 5fefd84d2107b76d58bdab28076bda51ce27a831[m
+Author: Mehdi Salimi <Salimi.Devop@gmail.com>
+Date:   Sat Jan 1 19:58:56 2022 +0330
+
+    Create first structure & Build main template
+
+[33mcommit 71e1fc207cf111191a43da6e8c4ba571c046ad57[m
+Author: Mehdi Salimi <Salimi.Devop@gmail.com>
+Date:   Thu Dec 30 00:15:31 2021 +0330
+
+    Initialize project using Create React App
