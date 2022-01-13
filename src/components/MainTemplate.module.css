@@ -78,9 +78,10 @@
     font-size: 2vw;
 }
 
-.clock {
+.analogClock {
     position: absolute;
-    color: white;
+    left: 4vw;
+    top:5vh
 }
 
 .weather {

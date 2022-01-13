@@ -7,6 +7,7 @@ import { inputValidates } from "../validate/validate";
 
 //Components
 import Weather from "./Weather";
+import AnalogClock from "./AnalogClock";
 
 //Weather Context
 import { weatherContext } from "../context/ManageContext";
@@ -52,7 +53,7 @@ const MainTemplate = () => {
           backgroundImage: `url(${background(WeatherData).city})`,
         }}>
         <div className={styles.clockWeatherContainer}>
-          <div className={styles.clock}>clock</div>
+          <div className={styles.analogClock}><AnalogClock/></div>
 
           <div className={styles.weather}>
             <Weather
