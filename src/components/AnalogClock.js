@@ -7,14 +7,14 @@ const AnalogClock = () => {
     mm: "",
     ss: "",
   });
-  setInterval(() => {
+  setTimeout(() => {
     let day = new Date();
     setTime({
       hh: day.getHours() * 30,
       mm: day.getMinutes() * deg,
       ss: day.getSeconds() * deg,
     });
-  });
+  }, 1000);
 
   const { hh, mm, ss } = time;
   return (
