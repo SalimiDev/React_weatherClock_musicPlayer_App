@@ -8,7 +8,7 @@ import { inputValidates } from "../validate/validate";
 //Components
 import Weather from "./Weather";
 import AnalogClock from "./AnalogClock";
-
+import PlayerApp from "./playerApp/PlayerApp"
 //Weather Context
 import { weatherContext } from "../context/ManageContext";
 
@@ -53,7 +53,9 @@ const MainTemplate = () => {
           backgroundImage: `url(${background(WeatherData).city})`,
         }}>
         <div className={styles.clockWeatherContainer}>
-          <div className={styles.analogClock}><AnalogClock/></div>
+          <div className={styles.analogClock}>
+            <AnalogClock />
+          </div>
 
           <div className={styles.weather}>
             <Weather
@@ -83,7 +85,9 @@ const MainTemplate = () => {
           </div>
         </div>
 
-        <div className={styles.musicAppContainer}>MusicApp</div>
+        <div className={styles.musicAppContainer}>
+          <PlayerApp />
+        </div>
       </div>
     </div>
   );
