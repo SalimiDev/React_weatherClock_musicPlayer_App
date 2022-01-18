@@ -1,0 +1,50 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.2);
+    height: 6vh;
+    margin: auto;
+    padding: 0.5vw;
+    border-radius: 0 0 20px 20px;
+}
+
+.logo img {
+    width: 3vw;
+    height: 3vw;
+}
+
+.searchContaienr {
+    display: flex;
+    align-items: center;
+}
+
+.searchIcon {
+    color: white;
+    font-size: 1.8vw;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+}
+
+.searchIcon:hover {
+    font-size: 2vw;
+    transition: all 0.2s ease-in-out;
+}
+
+.inputHide {
+    display: none;
+}
+
+.inputShow {
+    width: 17vw;
+    height: 3vh;
+    transform: translateX(-1.2vw);
+    background-color: rgba(255, 255, 255, 0.15);
+    border: none;
+    border-radius: 10px;
+    padding: 3px;
+    text-align: center;
+    color: aliceblue;
+    outline: none;
+}
