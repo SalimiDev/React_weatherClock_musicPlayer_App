@@ -1,16 +1,16 @@
 import React from 'react';
+import styles from "./styles/PlayerApp.module.css";
 import Header from './Header';
-import MusicPlayer from "./MusicPlayer"
+import PlayerBody from './PlayerBody';
 import Footer from "./Footer"
-import styles from "./styles/PlayerApp.module.css"
 
 const PlayerApp = () => {
     return (
-        <div className={styles.playerApp}>
-            <Header/>
-            <MusicPlayer/>
-            <Footer/>
-        </div>
+      <div className={styles.playerApp}>
+        <Header />
+        <PlayerBody/>
+        <Footer />
+      </div>
     );
 };
 

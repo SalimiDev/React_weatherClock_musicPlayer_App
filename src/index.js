@@ -1,16 +1,16 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
 import "./index.css";
 //Context
+import MusicApiContext from "./components/playerApp/context/MusicApiContext";
 import ManageContext from "./context/ManageContext";
 
 ReactDOM.render(
-  <ManageContext>
-    <App />
-  </ManageContext>,
+  <MusicApiContext>
+    <ManageContext>
+      <App />
+    </ManageContext>
+  </MusicApiContext>,
   document.getElementById("root")
 );
-
-
-     

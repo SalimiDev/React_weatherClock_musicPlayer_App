@@ -4,11 +4,13 @@
   "private": true,
   "dependencies": {
     "@bybas/weather-icons": "^2.0.0",
+    "@muhimur/deezer-public-api": "^1.0.24",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.24.0",
     "countries-and-timezones": "^3.3.0",
+    "deezer-public-api": "^1.0.4",
     "luxon": "^2.3.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
