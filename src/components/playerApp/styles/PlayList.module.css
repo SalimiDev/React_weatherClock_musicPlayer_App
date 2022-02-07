@@ -6,9 +6,26 @@
     box-shadow: 0vw 0vw 1vw -.4vw rgba(0, 0, 0, 0.6);
     /* border-radius: 6px; */
     /* display: none; */
-   
+
 }
 
-.audioList{
+.audioList {
     height: 50vh;
+    /* overflow-y: scroll; */
+    overflow: auto;
+    scrollbar-width: none;
+    /* Firefox */
+    -ms-overflow-style: none;
+    /* IE 10+ */
+
+}
+
+.audioList::-webkit-scrollbar {
+    display: none;
+    /*Chrome, Safari and Opera */
+    -ms-overflow-style: none;
+    /* IE and Edge */
+    scrollbar-width: none;
+    /* Firefox */
+
 }

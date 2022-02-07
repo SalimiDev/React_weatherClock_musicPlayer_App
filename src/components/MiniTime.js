@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext} from "react";
 import styles from "./MiniTime.module.css";
 //Npm Packages
 import { DateTime } from "luxon";

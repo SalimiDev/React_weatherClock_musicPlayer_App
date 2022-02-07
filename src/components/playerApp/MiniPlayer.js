@@ -1,18 +1,27 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import styles from "./styles/MiniPlayer.module.css";
 import { Icon } from "@iconify/react";
+import { musicContext } from "./context/MusicApiContext";
 
-const MiniPlayer = () => {
+const MiniPlayer = (props) => {
+  const { musicData } = useContext(musicContext);
+  const { cover, title1, info, audioSrc } = musicData;
+
+
   return (
     <div className={styles.container}>
-      <div className={styles.close}>
-        <button></button>
+      <div className={styles.turnToFull}>
+        <button onClick={() => props.turnToFull()}></button>
       </div>
       <div className={styles.top}>
-        <div className={styles.artistCover}>cover</div>
+        <div
+          className={styles.artistCover}
+          style={{
+            backgroundImage: `url(${cover})`,
+          }}>
+        </div>
         <div className={styles.left}>
-          <h1>music name</h1>
-          <p>music info</p>
+          <h1>{title1}</h1>
           <div className={styles.controlBtn}>
             <Icon
               icon="ic:round-skip-next"

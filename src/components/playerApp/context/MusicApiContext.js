@@ -1,31 +1,36 @@
 import axios from "axios";
 import React, { useEffect, useState, createContext } from "react";
-
+//Export the Music Data Using Context.
 export const musicContext = createContext();
+
 const MusicApiContext = (props) => {
-  const [musicData, setMusicData] = useState();
+  const [musicData, setMusicData] = useState({ status: true });
 
-  useEffect(() => {
-    const options = {
-      method: "GET",
-      url: "https://deezerdevs-deezer.p.rapidapi.com/track/1562681",
-      headers: {
-        "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
-        "x-rapidapi-key": "5480f5b92cmsh8e709d9e2d96596p1ac83bjsn018fea8509af",
-      },
+  const options = {
+    method: "GET",
+    url: "https://deezerdevs-deezer.p.rapidapi.com/playlist/5339994342",
+    headers: {
+      "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+      "x-rapidapi-key": "5480f5b92cmsh8e709d9e2d96596p1ac83bjsn018fea8509af",
+    },
+  };
+
+  if (musicData.status) {
+    const getData = async () => {
+      const response = await axios.request(options);
+
+      return response.data;
     };
-
-    axios
-      .request(options)
-      .then((response) => setMusicData(response.data))
-      .catch((error) => console.log(error));
-  }, []);
-
-  console.log(musicData);
+    getData();
+    const fetchAPI = async () => {
+      setMusicData(await getData());
+    };
+    fetchAPI();
+  }
 
   return (
     <div>
-      <musicContext.Provider value={musicData}>
+      <musicContext.Provider value={{ musicData, setMusicData }}>
         {props.children}
       </musicContext.Provider>
     </div>
@@ -33,3 +38,5 @@ const MusicApiContext = (props) => {
 };
 
 export default MusicApiContext;
+//"https://deezerdevs-deezer.p.rapidapi.com/playlist/5339994342"
+//"https://deezerdevs-deezer.p.rapidapi.com/playlist/785141981"

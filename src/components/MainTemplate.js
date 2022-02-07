@@ -37,7 +37,7 @@ const MainTemplate = () => {
     });
   };
 
-  const clickHandler = async (event) => {
+  const clickHandler =  (event) => {
     event.preventDefault();
     setWeatherData({ cityName: citySearch });
     setError(inputValidates(StationData));
