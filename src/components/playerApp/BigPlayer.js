@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import styles from "./styles/BigPlayer.module.css";
 import { Icon } from "@iconify/react";
+import defaultCover from "./assets/musicLogo.png";
 //Context
 import { musicContext } from "./context/MusicApiContext";
 
@@ -22,7 +23,7 @@ const BigPlayer = (props) => {
       <div
         className={styles.artistCover}
         style={{
-          backgroundImage: `url(${cover})`,
+          backgroundImage: cover?`url(${cover})` : `url(${defaultCover})`,
         }}></div>
       <div className={styles.musicInfo}>
         <h2>{title1}</h2>

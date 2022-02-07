@@ -1,6 +1,8 @@
 import React, { useState, useRef ,useContext} from "react";
 import styles from "./styles/Audios.module.css";
 import { Icon } from "@iconify/react";
+import defaultCover from "./assets/musicLogo.png";
+//context
 import { musicContext } from "./context/MusicApiContext";
 
 const Audios = (props) => {
@@ -41,7 +43,7 @@ const Audios = (props) => {
       <div
         className={styles.artistCover}
         style={{
-          backgroundImage: `url(${cover})`,
+          backgroundImage: cover ? `url(${cover})` : `url(${defaultCover})`,
         }}></div>
 
       <div className={styles.musicInfo}>

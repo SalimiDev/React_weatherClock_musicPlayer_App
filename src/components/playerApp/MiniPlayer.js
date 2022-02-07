@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import styles from "./styles/MiniPlayer.module.css";
 import { Icon } from "@iconify/react";
+import defaultCover from "./assets/musicLogo.png";
+//context
 import { musicContext } from "./context/MusicApiContext";
 
 const MiniPlayer = (props) => {
@@ -17,9 +19,8 @@ const MiniPlayer = (props) => {
         <div
           className={styles.artistCover}
           style={{
-            backgroundImage: `url(${cover})`,
-          }}>
-        </div>
+            backgroundImage: cover ? `url(${cover})` : `url(${defaultCover})`,
+          }}></div>
         <div className={styles.left}>
           <h1>{title1}</h1>
           <div className={styles.controlBtn}>

@@ -5,6 +5,7 @@ export const musicContext = createContext();
 
 const MusicApiContext = (props) => {
   const [musicData, setMusicData] = useState({ status: true });
+  console.log(musicData);
 
   const options = {
     method: "GET",
