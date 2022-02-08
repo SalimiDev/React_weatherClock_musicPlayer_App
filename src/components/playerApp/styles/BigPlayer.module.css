@@ -61,32 +61,24 @@
     margin-top: 8vh;
 }
 
-.controlBtn {
-    width: 100%;
+.btnContainer {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 6vh;
 }
 
-.prev,
-.pause,
-.next {
-    font-size: 4.7vw;
-    color: white;
-    cursor: pointer;
-
+.controlBtn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.prev:hover,
-.pause:hover,
-.next:hover {
-    color: yellow;
-}
 
 .list,
 .liked {
-    font-size: 2.5vw;
+    font-size: 3.5vw;
     color: white;
     cursor: pointer;
 }

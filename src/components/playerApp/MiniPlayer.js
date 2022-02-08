@@ -1,14 +1,18 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext} from "react";
 import styles from "./styles/MiniPlayer.module.css";
+import AudioControls from "./AudioControls";
 import { Icon } from "@iconify/react";
 import defaultCover from "./assets/musicLogo.png";
 //context
 import { musicContext } from "./context/MusicApiContext";
 
 const MiniPlayer = (props) => {
-  const { musicData } = useContext(musicContext);
-  const { cover, title1, info, audioSrc } = musicData;
+  //Api data
+  const { currentMusicData } = useContext(musicContext);
 
+  // Destructure for conciseness
+  const { cover, title1, info, audioSrc, audio, isPlaying } = currentMusicData;
+// console.log(audio);
 
   return (
     <div className={styles.container}>
@@ -21,24 +25,13 @@ const MiniPlayer = (props) => {
           style={{
             backgroundImage: cover ? `url(${cover})` : `url(${defaultCover})`,
           }}></div>
-        <div className={styles.left}>
+        <div className={styles.titleBtnContainer}>
           <h1>{title1}</h1>
-          <div className={styles.controlBtn}>
-            <Icon
-              icon="ic:round-skip-next"
-              hFlip={true}
-              className={styles.prev}
-            />
-            <Icon
-              icon="fluent:pause-circle-24-filled"
-              className={styles.pause}
-            />
-            <Icon icon="ic:round-skip-next" className={styles.next} />
-          </div>
+          <AudioControls />
         </div>
       </div>
       <div className={styles.audioProgress}>
-        <input type="range" />
+        <input type="range" step="1" min="0" />
       </div>
     </div>
   );

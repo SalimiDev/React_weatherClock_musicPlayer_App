@@ -1,0 +1,33 @@
+.audioControls button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.audioControls {
+    display: flex;
+    justify-content: space-between;
+    width: 75%;
+}
+
+.audioControls .prev svg,
+.audioControls .next svg {
+    width: 3.2vw;
+    height: 3.2vw;
+}
+
+.audioControls .play svg,
+.audioControls .pause svg {
+    width: 3.5vw;
+    height: 3.5vw;
+}
+
+.audioControls path {
+    fill: white;
+}
+
+
+
+.audioControls path:hover {
+    fill: yellow
+}

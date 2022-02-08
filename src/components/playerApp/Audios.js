@@ -1,4 +1,4 @@
-import React, { useState, useRef ,useContext} from "react";
+import React, { useState, useRef, useContext } from "react";
 import styles from "./styles/Audios.module.css";
 import { Icon } from "@iconify/react";
 import defaultCover from "./assets/musicLogo.png";
@@ -6,38 +6,33 @@ import defaultCover from "./assets/musicLogo.png";
 import { musicContext } from "./context/MusicApiContext";
 
 const Audios = (props) => {
-  const { musicData, setMusicData } = useContext(musicContext);
-
-  const [favorite, setFavorite] = useState({
-    isChecked: false,
-  });
-
-  const likeHandler = () => {
-    setFavorite({
-      isChecked: !favorite.isChecked,
-    });
-  };
+  //context
+  const { currentMusicData, setCurrentMusicData } = useContext(musicContext);
+  //state
+  const [favorite, setFavorite] = useState({ isChecked: false });
+  const [isplaying, setPlay] = useState(false);
+  // Destructure for conciseness
   const { cover, title, info, audioSrc } = props;
+   //refs
+  const audio = useRef(new Audio(audioSrc));
+  audio.current.preload = "none";
+  //onclick handler
+  const favoriteHandler = () => {setFavorite({ isChecked: !favorite.isChecked })};
+const playHandler = () => {
+    setPlay(!isplaying);
+    isplaying ? audio.current.pause() : audio.current.play();
 
-  const [audio] = useState(new Audio(audioSrc));
-  const [isplay, setPlay] = useState(false);
-  // const audio = useRef(new Audio(SRC));
-  const playHandler = () => {
-    setPlay(!isplay);
-    // isplay ? audio.current.pause() : audio.current.play();
-  // const audio = new Audio(SRC);
-
-    isplay ? audio.pause() : audio.play();
-    setMusicData({
-      ...musicData,
+    setCurrentMusicData({
+      ...currentMusicData,
       cover: cover,
       title1: title,
       info: info,
       audioSrc: audioSrc,
-      audio: audio,
+      audio: audio.current.duration,
+      isPlaying: isplaying,
     });
   };
-
+  
   return (
     <div className={styles.container} onClick={playHandler}>
       <div
@@ -53,7 +48,7 @@ const Audios = (props) => {
       <button
         name="favorite"
         className={favorite.isChecked ? styles.likeChecked : styles.likeUnCheck}
-        onClick={likeHandler}>
+        onClick={favoriteHandler}>
         <Icon icon="wpf:like" />
       </button>
     </div>

@@ -1,10 +1,12 @@
 import axios from "axios";
-import React, { useEffect, useState, createContext } from "react";
+import React, {  useState, createContext } from "react";
 //Export the Music Data Using Context.
 export const musicContext = createContext();
 
 const MusicApiContext = (props) => {
   const [musicData, setMusicData] = useState({ status: true });
+  const [currentMusicData, setCurrentMusicData] = useState({});
+
   console.log(musicData);
 
   const options = {
@@ -31,7 +33,13 @@ const MusicApiContext = (props) => {
 
   return (
     <div>
-      <musicContext.Provider value={{ musicData, setMusicData }}>
+      <musicContext.Provider
+        value={{
+          musicData,
+          setMusicData,
+          currentMusicData,
+          setCurrentMusicData,
+        }}>
         {props.children}
       </musicContext.Provider>
     </div>

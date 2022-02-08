@@ -3,7 +3,6 @@
     flex-direction: column;
     font-size: 1vw;
     margin: auto;
-    /* width: 96%; */
     height: 18.2vh;
     border-radius: 1vh;
     margin-top: -0.5vh;
@@ -19,10 +18,13 @@
 .turnToFull button {
     width: 3vw;
     text-align: center;
+    border: 1px solid white;
+    background: white;
+    cursor: pointer;
 }
 
 .artistCover {
-    width: 8vw;
+    width: 30%;
     height: 8vw;
     border-radius: 50%;
     background: url('/src/images/test.jpg');
@@ -40,37 +42,13 @@
 
 }
 
-.left {
-    width: 75%;
+.titleBtnContainer {
+    width: 70%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
-}
-
-
-
-.controlBtn {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.prev,
-.pause,
-.next {
-    font-size: 7vh;
-    color: white;
-    cursor: pointer;
-
-}
-
-.prev:hover,
-.pause:hover,
-.next:hover {
-    color: yellow;
 }
 
 .audioProgress {
