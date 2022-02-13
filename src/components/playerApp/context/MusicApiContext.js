@@ -1,13 +1,11 @@
 import axios from "axios";
-import React, {  useState, createContext } from "react";
+import React, { useState, createContext } from "react";
 //Export the Music Data Using Context.
 export const musicContext = createContext();
 
 const MusicApiContext = (props) => {
   const [musicData, setMusicData] = useState({ status: true });
   const [currentMusicData, setCurrentMusicData] = useState({});
-
-  console.log(musicData);
 
   const options = {
     method: "GET",
@@ -18,7 +16,7 @@ const MusicApiContext = (props) => {
     },
   };
 
-  if (musicData.status) {
+  if (musicData) {
     const getData = async () => {
       const response = await axios.request(options);
 

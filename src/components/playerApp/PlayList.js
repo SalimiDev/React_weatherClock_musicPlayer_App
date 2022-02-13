@@ -1,29 +1,26 @@
-import React, { useContext, useRef } from "react";
+import React from "react";
 import styles from "./styles/PlayList.module.css";
-import Audios from "./Audios";
-import { musicContext } from "./context/MusicApiContext";
+import AudiosCard from "./AudioCard";
 
-const PlayList = (props) => {
-  const {musicData} = useContext(musicContext);
-  const musicList = musicData?.tracks?.data;
-
+const PlayList = ({ tracks, currentState }) => {
   return (
-   <div className={styles.playList}>
+    <div className={styles.playList}>
       <ul className={styles.audioList}>
         <li>
-          {musicList?.map((track) => (
-            <Audios
+          {tracks.map((track) => (
+            <AudiosCard
               key={track.id}
-              audioSrc={track.preview}
-              cover={track.album.cover}
-              title={track.title_short}
-              info={track.album.title}
+              id={track.id}
+              audioSrc={track.audioSrc}
+              cover={track.cover}
+              title={track.title}
+              artist={track.artist}
+              currentState={currentState}
             />
           ))}
         </li>
       </ul>
     </div>
-    
   );
 };
 

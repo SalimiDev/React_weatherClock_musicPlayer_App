@@ -2,23 +2,16 @@
     display: flex;
     flex-direction: column;
     margin: 0 1vw 0 1vw;
-    /* display: none; */
 }
 
 
 .artistCover {
     width: 18vw;
     height: 18vw;
-    background-color: azure;
     border-radius: 50%;
     margin: auto;
     margin-top: 4vh;
-    background: url('/src/images/test.jpg');
-    background-size: cover;
-
-
 }
-
 .musicInfo {
     height: 2vh;
     display: flex;
@@ -27,8 +20,6 @@
     margin-top: 3vh;
     font-size: 1.2vw;
     color: #fff;
-
-
 }
 
 .likeUnCheck {
