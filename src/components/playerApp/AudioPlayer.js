@@ -1,17 +1,22 @@
-import React, { useState, useEffect, useRef} from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import styles from "./styles/PlayerBody.module.css";
 import FullScreenPlayer from "./FullScreenPlayer";
 import PlayList from "./PlayList";
 import MiniPlayer from "./MiniPlayer";
+//Context
+import { musicContext } from "./context/MusicApiContext";
 
 const AudioPlayer = ({ tracks }) => {
+  // States from context
+  const { favListBtn } = useContext(musicContext);
   // State
   const [trackIndex, setTrackIndex] = useState(0);
   const [trackProgress, setTrackProgress] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [fullScreen, setFullScreen] = useState(true);
+  const [fullScreen, setFullScreen] = useState(false);
+
   // Destructure for conciseness
-  const { title, artist, color, cover, audioSrc } = tracks[trackIndex];
+  const { id, title, artist, color, cover, audioSrc } = tracks[trackIndex];
   // Refs
   const audioRef = useRef(new Audio(audioSrc));
   const intervalRef = useRef();
@@ -108,6 +113,7 @@ const AudioPlayer = ({ tracks }) => {
   }, []);
 
   const currentState = {
+    id: id,
     cover: cover,
     title: title,
     artist: artist,
@@ -124,11 +130,12 @@ const AudioPlayer = ({ tracks }) => {
     onScrubEnd: onScrubEnd,
     trackStyling: trackStyling,
     toFullScreen: toFullScreen,
+    setFullScreen: setFullScreen,
   };
 
   return (
     <div className={styles.body}>
-      {fullScreen ? (
+      {fullScreen || favListBtn ? (
         <div>
           <PlayList tracks={tracks} currentState={currentState} />
           <MiniPlayer currentState={currentState} />

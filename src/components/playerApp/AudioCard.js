@@ -1,24 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./styles/AudioCard.module.css";
 import { Icon } from "@iconify/react";
 
 const AudioCard = (props) => {
-  //state
-  const [favorite, setFavorite] = useState({ isChecked: false });
-
   // Destructure for conciseness
-  const { title, artist, cover, id } = props;
+  const { title, artist, cover, id, toFavorites, favExist } = props;
   const { setIsPlaying, setTrackIndex } = props.currentState;
-
-  //onclick handler
-  const toFavoriteList = () => {
-    setFavorite({ isChecked: !favorite.isChecked });
-  };
+  //Set onClick to play music with click on tracks in playlist
   const playInList = () => {
     setTrackIndex(id);
     setIsPlaying(true);
   };
-
+  
   return (
     <div className={styles.container}>
       <section onClick={playInList}>
@@ -29,9 +22,10 @@ const AudioCard = (props) => {
         </span>
       </section>
       <button
+        id={id}
+        onClick={toFavorites()}
         name="favorite"
-        className={favorite.isChecked ? styles.likeChecked : styles.likeUnCheck}
-        onClick={toFavoriteList}>
+        className={favExist ? styles.likeChecked : styles.likeUnCheck}>
         <Icon icon="wpf:like" />
       </button>
     </div>
