@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useContext } from "react";
-import styles from "./styles/PlayerBody.module.css";
+import styles from "./styles/AudioPlayer.module.css";
 import FullScreenPlayer from "./FullScreenPlayer";
 import PlayList from "./PlayList";
 import MiniPlayer from "./MiniPlayer";
@@ -127,14 +127,16 @@ const AudioPlayer = ({ tracks }) => {
   };
 
   return (
-    <div className={styles.body}>
+    <div className={styles.container}>
       {fullScreen || favListBtn ? (
-        <div>
+        <div className={styles.playList}>
           <PlayList tracks={tracks} currentState={currentState} />
           <MiniPlayer currentState={currentState} />
         </div>
       ) : (
-        <FullScreenPlayer currentState={currentState} />
+        <div className={styles.fullScreen}>
+          <FullScreenPlayer currentState={currentState} />
+        </div>
       )}
     </div>
   );

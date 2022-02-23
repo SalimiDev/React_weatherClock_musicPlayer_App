@@ -31,17 +31,18 @@ const FullScreenPlayer = (props) => {
   return (
     <div className={styles.container}>
       <img src={cover} alt={title} className={styles.artistCover} />
-      <div className={styles.musicInfo}>
-        <h2>{title}</h2>
+      <section className={styles.infoLikeContainer}>
+        <div className={styles.musicInfo}>
+          <h2>{title}</h2>
+          <p>{artist}</p>
+        </div>
         <button
           id={id}
           className={existInFavorites ? styles.likeChecked : styles.likeUnCheck}
           onClick={addToFavorites}>
           <Icon icon="wpf:like" />
         </button>
-      </div>
-      <br />
-      <p>{artist}</p>
+      </section>
       <div className={styles.audioProgress}>
         <input
           type="range"

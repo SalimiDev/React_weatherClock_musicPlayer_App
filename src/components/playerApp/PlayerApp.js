@@ -6,14 +6,19 @@ import Footer from "./Footer";
 import tracks from "./tracks";
 
 const PlayerApp = () => {
-  
   return (
     <div className={styles.playerApp}>
-      <Header />
-      <AudioPlayer tracks={tracks} />
-      <Footer />
+      <header className={styles.header}>
+        <Header />
+      </header>
+      <body className={styles.body}>
+        <AudioPlayer tracks={tracks} />
+      </body>
+      <footer className={styles.footer}>
+        <Footer />
+      </footer>
     </div>
   );
-};;
+};
 
 export default PlayerApp;

@@ -2,6 +2,7 @@
     margin: auto;
     margin-top: 1vh;
     width: 96%;
+    height: 100%;
     filter: drop-shadow(4px 4px 5px black);
     box-shadow: 0vw 0vw 1vw -.4vw rgba(0, 0, 0, 0.6);
 }
