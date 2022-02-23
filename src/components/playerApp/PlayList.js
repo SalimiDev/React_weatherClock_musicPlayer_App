@@ -6,7 +6,8 @@ import { musicContext } from "./context/MusicApiContext";
 
 const PlayList = ({ tracks, currentState }) => {
   // States from context
-  const { toFavorites, favorites, favListBtn } = useContext(musicContext);
+  const { addToFavorites, favorites, favListBtn, searchedWord } =
+    useContext(musicContext);
 
   return (
     <div className={styles.playList}>
@@ -22,24 +23,33 @@ const PlayList = ({ tracks, currentState }) => {
                   artist={track.artist}
                   favExist={true}
                   currentState={currentState}
-                  toFavorites={(onclick = () => toFavorites)}
+                  toFavorites={(onclick = () => addToFavorites)}
                 />
               </li>
             ))
-          : tracks.map((track) => (
-              <li key={track.id}>
-                <AudiosCard
-                  id={track.id}
-                  audioSrc={track.audioSrc}
-                  cover={track.cover}
-                  title={track.title}
-                  artist={track.artist}
-                  favExist={favorites.find((fav) => fav.id === track.id)}
-                  currentState={currentState}
-                  toFavorites={(onclick = () => toFavorites)}
-                />
-              </li>
-            ))}
+          : tracks
+              .filter((track) =>
+                searchedWord === ""
+                  ? track
+                  : `${track.title}${track.artist}`
+                      .toLowerCase()
+                      .includes(searchedWord.toLowerCase())
+              )
+
+              .map((track) => (
+                <li key={track.id}>
+                  <AudiosCard
+                    id={track.id}
+                    audioSrc={track.audioSrc}
+                    cover={track.cover}
+                    title={track.title}
+                    artist={track.artist}
+                    favExist={favorites.find((fav) => fav.id === track.id)}
+                    currentState={currentState}
+                    toFavorites={(onclick = () => addToFavorites)}
+                  />
+                </li>
+              ))}
       </ul>
     </div>
   );

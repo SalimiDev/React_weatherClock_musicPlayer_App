@@ -5,12 +5,20 @@ import tracks from "../tracks";
 //Export the Music Data Using Context.
 export const musicContext = createContext();
 
-const MusicApiContext = ({children}) => {
+const MusicApiContext = ({ children }) => {
   //API State
   const [musicData, setMusicData] = useState({ status: true });
   //Local music State
   const [favorites, setFavorites] = useState([]);
   const [favListBtn, setFavListBtn] = useState(false);
+  const [fullScreen, setFullScreen] = useState(false);
+  const [searchedWord, setSearchedWord] = useState("");
+
+  //Click handler to Toggle between FullScreen and Playlist
+  const toFullScreen = () => {
+    setFullScreen(!fullScreen);
+  };
+
   // Get saved data from Local storage
   const getStorage = JSON.parse(localStorage.getItem("favoriteTracks") || "0");
   useEffect(() => {
@@ -20,7 +28,7 @@ const MusicApiContext = ({children}) => {
   }, []);
 
   //Set toggle Onclick to Add or remove musics from favorite list
-  const toFavorites = (e) => {
+  const addToFavorites = (e) => {
     const favArray = favorites;
     const targetId = parseInt(e.currentTarget.id);
     const favTrack = favorites.filter((el) => el.id === targetId)[0];
@@ -65,20 +73,21 @@ const MusicApiContext = ({children}) => {
   const context = {
     musicData: musicData,
     setMusicData: setMusicData,
-    toFavorites: toFavorites,
+    addToFavorites: addToFavorites,
     favorites: favorites,
     setFavorites: setFavorites,
     favListBtn: favListBtn,
     setFavListBtn: setFavListBtn,
     toFavList: toFavList,
+    toFullScreen: toFullScreen,
+    setFullScreen: setFullScreen,
+    fullScreen: fullScreen,
+    searchedWord: searchedWord,
+    setSearchedWord: setSearchedWord,
   };
-
   return (
     <div>
-      <musicContext.Provider
-        value={context}>
-        {children}
-      </musicContext.Provider>
+      <musicContext.Provider value={context}>{children}</musicContext.Provider>
     </div>
   );
 };

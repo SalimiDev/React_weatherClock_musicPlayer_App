@@ -5,10 +5,8 @@ import AudioPlayer from "./AudioPlayer";
 import Footer from "./Footer";
 import tracks from "./tracks";
 
-
 const PlayerApp = () => {
   
-
   return (
     <div className={styles.playerApp}>
       <Header />

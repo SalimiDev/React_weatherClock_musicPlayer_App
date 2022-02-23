@@ -1,23 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import styles from "./styles/Header.module.css";
 import { musicLogo } from "./assets/index.js";
 import { Icon } from "@iconify/react";
+//Context
+import { musicContext } from "./context/MusicApiContext";
 
 const Header = () => {
-  const [searchInput, setSearchInput] = useState({
-    isActive: false,
-  });
+  // States from context
+  const { setFullScreen, setSearchedWord, setFavListBtn } =
+    useContext(musicContext);
+  // Local States
+  const [searchBtn, setSearchBtn] = useState(false);
 
-  const searchHandler = () => {
-    setSearchInput({
-      isActive: !searchInput.isActive,
-    });
+  const SearchBtnClickHandler = () => {
+    setSearchBtn(!searchBtn);
+    setFullScreen(true);
+    setFavListBtn(false)
   };
-
-  const findHandler = () => {
-    setSearchInput({
-      isActive: !searchInput.isActive,
-    });
+  const searchInputOnFocus = () => {
+    setSearchBtn(true);
+    setFullScreen(true);
+    setFavListBtn(false);
   };
 
   return (
@@ -29,14 +32,12 @@ const Header = () => {
         <input
           type="text"
           placeholder="Find music.."
-          className={searchInput.isActive ? styles.inputShow : styles.inputHide}
+          className={searchBtn ? styles.inputShow : styles.inputHide}
+          onChange={(e) => setSearchedWord(e.target.value)}
+          onFocus={searchInputOnFocus}
         />
         <button className={styles.searchIcon}>
-          {searchInput.isActive ? (
-            <Icon icon="feather:search" onClick={findHandler} />
-          ) : (
-            <Icon icon="feather:search" onClick={searchHandler} />
-          )}
+          <Icon icon="feather:search" onClick={SearchBtnClickHandler} />
         </button>
       </div>
     </div>

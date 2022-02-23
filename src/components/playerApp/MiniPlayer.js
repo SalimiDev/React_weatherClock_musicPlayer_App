@@ -6,7 +6,7 @@ import { musicContext } from "./context/MusicApiContext";
 
 const MiniPlayer = (props) => {
   // States from context
-  const { setFavListBtn } = useContext(musicContext);
+  const { setFavListBtn, setFullScreen } = useContext(musicContext);
   // Destructure for conciseness
   const {
     cover,
@@ -20,7 +20,7 @@ const MiniPlayer = (props) => {
     onScrub,
     onScrubEnd,
     trackStyling,
-    setFullScreen,
+    
   } = props.currentState;
 
   const backToFull = () => {

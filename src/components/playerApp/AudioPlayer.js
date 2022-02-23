@@ -8,12 +8,11 @@ import { musicContext } from "./context/MusicApiContext";
 
 const AudioPlayer = ({ tracks }) => {
   // States from context
-  const { favListBtn } = useContext(musicContext);
+  const { favListBtn, fullScreen } = useContext(musicContext);
   // State
   const [trackIndex, setTrackIndex] = useState(0);
   const [trackProgress, setTrackProgress] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [fullScreen, setFullScreen] = useState(false);
 
   // Destructure for conciseness
   const { id, title, artist, color, cover, audioSrc } = tracks[trackIndex];
@@ -74,10 +73,6 @@ const AudioPlayer = ({ tracks }) => {
     }
   };
 
-  const toFullScreen = () => {
-    setFullScreen(!fullScreen);
-  };
-
   useEffect(() => {
     if (isPlaying) {
       audioRef.current.play();
@@ -129,8 +124,6 @@ const AudioPlayer = ({ tracks }) => {
     onScrub: onScrub,
     onScrubEnd: onScrubEnd,
     trackStyling: trackStyling,
-    toFullScreen: toFullScreen,
-    setFullScreen: setFullScreen,
   };
 
   return (

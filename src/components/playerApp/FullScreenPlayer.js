@@ -1,4 +1,4 @@
-import React, {useContext } from "react";
+import React, { useContext } from "react";
 import styles from "./styles/FullScreenPLayer.module.css";
 import AudioControls from "./AudioControls";
 import { Icon } from "@iconify/react";
@@ -7,7 +7,8 @@ import { musicContext } from "./context/MusicApiContext";
 
 const FullScreenPlayer = (props) => {
   // States from context
-  const { toFavorites, favorites, toFavList } = useContext(musicContext);
+  const { favorites, addToFavorites, toFavList, toFullScreen } =
+    useContext(musicContext);
   // Destructure for conciseness
   const {
     id,
@@ -23,7 +24,6 @@ const FullScreenPlayer = (props) => {
     onScrub,
     onScrubEnd,
     trackStyling,
-    toFullScreen,
   } = props.currentState;
   //Return true if track exist in favorites list
   const existInFavorites = favorites.find((fav) => fav.id === id);
@@ -36,7 +36,7 @@ const FullScreenPlayer = (props) => {
         <button
           id={id}
           className={existInFavorites ? styles.likeChecked : styles.likeUnCheck}
-          onClick={toFavorites}>
+          onClick={addToFavorites}>
           <Icon icon="wpf:like" />
         </button>
       </div>
