@@ -12,11 +12,6 @@ const Header = () => {
   // Local States
   const [searchBtn, setSearchBtn] = useState(false);
 
-  const SearchBtnClickHandler = () => {
-    setSearchBtn(!searchBtn);
-    setFullScreen(true);
-    setFavListBtn(false)
-  };
   const searchInputOnFocus = () => {
     setSearchBtn(true);
     setFullScreen(true);
@@ -37,7 +32,10 @@ const Header = () => {
           onFocus={searchInputOnFocus}
         />
         <button className={styles.searchIcon}>
-          <Icon icon="feather:search" onClick={SearchBtnClickHandler} />
+          <Icon
+            icon="feather:search"
+            onClick={() => setSearchBtn(!searchBtn)}
+          />
         </button>
       </div>
     </div>
