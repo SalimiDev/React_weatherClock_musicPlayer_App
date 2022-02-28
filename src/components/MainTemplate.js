@@ -28,8 +28,8 @@ const MainTemplate = () => {
     });
   }, [WeatherData]);
 
-  const clickHandler = (event) => {
-    event.preventDefault();
+  const clickHandler = (e) => {
+    e.preventDefault();
     setWeatherData({ cityName: searchInput });
     setError(inputValidates(StationData));
   };
@@ -69,6 +69,7 @@ const MainTemplate = () => {
               name="citySearch"
               value={searchInput}
               onChange={(e) => setSearchInput(e.target.value)}
+              onKeyDown={(e) => e.key === "Enter" && clickHandler(e)}
             />
             <button className={styles.searchButton} onClick={clickHandler}>
               <Icon icon="fluent:globe-search-24-filled" />
