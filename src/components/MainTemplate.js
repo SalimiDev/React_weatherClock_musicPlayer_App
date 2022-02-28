@@ -15,10 +15,10 @@ const MainTemplate = () => {
   const [Error, setError] = useState({});
   const { WeatherData, setWeatherData, Errors } = useContext(weatherContext);
   const [StationData, setStationData] = useState({});
+  const [searchInput, setSearchInput] = useState("");
   useEffect(() => {
     setStationData({
       cod: WeatherData.cod,
-      citySearch: "",
       city: WeatherData.name,
       temp: Math.floor(WeatherData.main?.temp - 273.15),
       icon: Array.isArray(WeatherData.weather) && WeatherData.weather[0].icon,
@@ -28,20 +28,13 @@ const MainTemplate = () => {
     });
   }, [WeatherData]);
 
-  const searchHandler = (event) => {
-    setStationData({
-      ...StationData,
-      citySearch: [event.target.value],
-    });
-  };
-
   const clickHandler = (event) => {
     event.preventDefault();
-    setWeatherData({ cityName: citySearch });
+    setWeatherData({ cityName: searchInput });
     setError(inputValidates(StationData));
   };
 
-  const { city, temp, icon, descrip, citySearch } = StationData;
+  const { city, temp, icon, descrip } = StationData;
 
   return (
     <div>
@@ -74,8 +67,8 @@ const MainTemplate = () => {
               className={styles.searchBox}
               type="text"
               name="citySearch"
-              value={citySearch}
-              onChange={searchHandler}
+              value={searchInput}
+              onChange={(e) => setSearchInput(e.target.value)}
             />
             <button className={styles.searchButton} onClick={clickHandler}>
               <Icon icon="fluent:globe-search-24-filled" />
