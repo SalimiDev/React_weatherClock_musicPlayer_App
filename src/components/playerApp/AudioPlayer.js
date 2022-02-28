@@ -1,19 +1,17 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
+import React, { useState, useEffect, useRef} from "react";
 import styles from "./styles/AudioPlayer.module.css";
+import { Routes, Route } from "react-router-dom";
+//Components
 import FullScreenPlayer from "./FullScreenPlayer";
 import PlayList from "./PlayList";
 import MiniPlayer from "./MiniPlayer";
-//Context
-import { musicContext } from "./context/MusicApiContext";
+import FavoriteList from "./FavoriteList";
 
 const AudioPlayer = ({ tracks }) => {
-  // States from context
-  const { favListBtn, fullScreen } = useContext(musicContext);
   // State
   const [trackIndex, setTrackIndex] = useState(0);
   const [trackProgress, setTrackProgress] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
-
   // Destructure for conciseness
   const { id, title, artist, color, cover, audioSrc } = tracks[trackIndex];
   // Refs
@@ -28,7 +26,6 @@ const AudioPlayer = ({ tracks }) => {
   const trackStyling = `
     -webkit-gradient(linear, 0% 0%, 100% 0%, color-stop(${currentPercentage}, #fff), color-stop(${currentPercentage}, #777))
   `;
-
   const startTimer = () => {
     // Clear any timers already running
     clearInterval(intervalRef.current);
@@ -127,17 +124,35 @@ const AudioPlayer = ({ tracks }) => {
   };
 
   return (
-    <div className={styles.container}>
-      {fullScreen || favListBtn ? (
-        <div className={styles.playList}>
-          <PlayList tracks={tracks} currentState={currentState} />
-          <MiniPlayer currentState={currentState} />
-        </div>
-      ) : (
-        <div className={styles.fullScreen}>
-          <FullScreenPlayer currentState={currentState} />
-        </div>
-      )}
+    <div>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <div className={styles.fullScreen}>
+              <FullScreenPlayer currentState={currentState} />
+            </div>
+          }></Route>
+
+        <Route
+          path="/playlist"
+          element={
+            <div className={styles.playList}>
+              <PlayList tracks={tracks} currentState={currentState} />
+              <MiniPlayer currentState={currentState} />
+            </div>
+          }
+        />
+        <Route
+          path="/favorites"
+          element={
+            <div className={styles.playList}>
+              <FavoriteList currentState={currentState} />
+              <MiniPlayer currentState={currentState} />
+            </div>
+          }
+        />
+      </Routes>
     </div>
   );
 };

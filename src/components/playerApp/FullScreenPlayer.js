@@ -2,13 +2,13 @@ import React, { useContext } from "react";
 import styles from "./styles/FullScreenPLayer.module.css";
 import AudioControls from "./AudioControls";
 import { Icon } from "@iconify/react";
+import { Link } from "react-router-dom";
 //Context
 import { musicContext } from "./context/MusicApiContext";
 
 const FullScreenPlayer = (props) => {
   // States from context
-  const { favorites, addToFavorites, toFavList, toFullScreen } =
-    useContext(musicContext);
+  const { favorites, addToFavorites } = useContext(musicContext);
   // Destructure for conciseness
   const {
     id,
@@ -58,11 +58,12 @@ const FullScreenPlayer = (props) => {
         />
       </div>
       <div className={styles.btnContainer}>
-        <Icon
-          icon="carbon:user-favorite-alt-filled"
-          className={styles.liked}
-          onClick={toFavList}
-        />
+        <Link to="/favorites">
+          <Icon
+            icon="carbon:user-favorite-alt-filled"
+            className={styles.liked}
+          />
+        </Link>
         <div className={styles.controlBtn}>
           <AudioControls
             isPlaying={isPlaying}
@@ -71,11 +72,12 @@ const FullScreenPlayer = (props) => {
             onPlayPauseClick={setIsPlaying}
           />
         </div>
-        <Icon
-          icon="bx:bxs-playlist"
-          className={styles.list}
-          onClick={toFullScreen}
-        />
+        <Link to="/playlist">
+          <Icon
+            icon="bx:bxs-playlist"
+            className={styles.list}
+          />
+        </Link>
       </div>
     </div>
   );

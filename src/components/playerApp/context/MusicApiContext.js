@@ -10,15 +10,7 @@ const MusicApiContext = ({ children }) => {
   const [musicData, setMusicData] = useState({ status: true });
   //Local music State
   const [favorites, setFavorites] = useState([]);
-  const [favListBtn, setFavListBtn] = useState(false);
-  const [fullScreen, setFullScreen] = useState(false);
   const [searchedWord, setSearchedWord] = useState("");
-
-  //Click handler to Toggle between FullScreen and Playlist
-  const toFullScreen = () => {
-    setFullScreen(!fullScreen);
-  };
-
   // Get saved data from Local storage
   const getStorage = JSON.parse(localStorage.getItem("favoriteTracks") || "0");
   useEffect(() => {
@@ -44,9 +36,7 @@ const MusicApiContext = ({ children }) => {
     localStorage.setItem("favoriteTracks", JSON.stringify(favorites));
   };
   //Set onClick for button to toggle rendering between favorite list and playlist
-  const toFavList = () => {
-    setFavListBtn(!favListBtn);
-  };
+ 
 
   //Get data from Api
   const options = {
@@ -76,12 +66,6 @@ const MusicApiContext = ({ children }) => {
     addToFavorites: addToFavorites,
     favorites: favorites,
     setFavorites: setFavorites,
-    favListBtn: favListBtn,
-    setFavListBtn: setFavListBtn,
-    toFavList: toFavList,
-    toFullScreen: toFullScreen,
-    setFullScreen: setFullScreen,
-    fullScreen: fullScreen,
     searchedWord: searchedWord,
     setSearchedWord: setSearchedWord,
   };
@@ -93,5 +77,4 @@ const MusicApiContext = ({ children }) => {
 };
 
 export default MusicApiContext;
-//"https://deezerdevs-deezer.p.rapidapi.com/playlist/5339994342"
-//"https://deezerdevs-deezer.p.rapidapi.com/playlist/785141981"
+

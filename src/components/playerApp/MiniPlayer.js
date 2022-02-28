@@ -1,12 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import styles from "./styles/MiniPlayer.module.css";
+import { Link } from "react-router-dom";
+//Components
 import AudioControls from "./AudioControls";
-//Context
-import { musicContext } from "./context/MusicApiContext";
 
 const MiniPlayer = (props) => {
-  // States from context
-  const { setFavListBtn, setFullScreen } = useContext(musicContext);
   // Destructure for conciseness
   const {
     cover,
@@ -20,18 +18,14 @@ const MiniPlayer = (props) => {
     onScrub,
     onScrubEnd,
     trackStyling,
-    
   } = props.currentState;
-
-  const backToFull = () => {
-    setFullScreen(false);
-    setFavListBtn(false);
-  };
 
   return (
     <div className={styles.container}>
       <div className={styles.turnToFull}>
-        <button onClick={backToFull}></button>
+        <Link to="/">
+          <button></button>
+        </Link>
       </div>
       <div className={styles.top}>
         <img src={cover} alt={title} className={styles.artistCover} />

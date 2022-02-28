@@ -11,9 +11,9 @@ const PlayerApp = () => {
       <header className={styles.header}>
         <Header />
       </header>
-      <body className={styles.body}>
+      <div className={styles.body}>
         <AudioPlayer tracks={tracks} />
-      </body>
+      </div>
       <footer className={styles.footer}>
         <Footer />
       </footer>

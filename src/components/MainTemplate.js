@@ -4,16 +4,14 @@ import { Icon } from "@iconify/react";
 import { background } from "./background";
 //Validation
 import { inputValidates } from "../validate/validate";
-
 //Components
 import Weather from "./Weather";
 import AnalogClock from "./AnalogClock";
-import PlayerApp from "./playerApp/PlayerApp"
+import PlayerApp from "./playerApp/PlayerApp";
 //Weather Context
 import { weatherContext } from "../context/ManageContext";
 
 const MainTemplate = () => {
-
   const [Error, setError] = useState({});
   const { WeatherData, setWeatherData, Errors } = useContext(weatherContext);
   const [StationData, setStationData] = useState({});
@@ -37,7 +35,7 @@ const MainTemplate = () => {
     });
   };
 
-  const clickHandler =  (event) => {
+  const clickHandler = (event) => {
     event.preventDefault();
     setWeatherData({ cityName: citySearch });
     setError(inputValidates(StationData));

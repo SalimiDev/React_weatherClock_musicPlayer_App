@@ -12,8 +12,6 @@ const Footer = () => {
           <img src={musicLogo} alt="logo" />
         </div>
         <div className={styles.searchContaienr}>
-         
-          
         </div>
       </div>
     );
