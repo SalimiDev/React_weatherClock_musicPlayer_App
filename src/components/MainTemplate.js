@@ -3,7 +3,9 @@ import styles from "./MainTemplate.module.css";
 import { Icon } from "@iconify/react";
 import { background } from "./background";
 //Validation
-import { inputValidates } from "../validate/validate";
+import { ToastContainer } from "react-toastify";
+import { notify } from "./toast";
+import "react-toastify/dist/ReactToastify.css";
 //Components
 import Weather from "./Weather";
 import AnalogClock from "./AnalogClock";
@@ -12,8 +14,7 @@ import PlayerApp from "./playerApp/PlayerApp";
 import { weatherContext } from "../context/ManageContext";
 
 const MainTemplate = () => {
-  const [Error, setError] = useState({});
-  const { WeatherData, setWeatherData, Errors } = useContext(weatherContext);
+  const { WeatherData, setWeatherData } = useContext(weatherContext);
   const [StationData, setStationData] = useState({});
   const [searchInput, setSearchInput] = useState("");
   useEffect(() => {
@@ -28,12 +29,15 @@ const MainTemplate = () => {
     });
   }, [WeatherData]);
 
-  const clickHandler = (e) => {
+  const searchClickHandler = (e) => {
     e.preventDefault();
-    setWeatherData({ cityName: searchInput });
-    setError(inputValidates(StationData));
+    if (searchInput) {
+      setWeatherData({ cityName: searchInput });
+    } else {
+      notify("error", "Please enter the city name");
+    }
   };
-
+  // Destructure for conciseness
   const { city, temp, icon, descrip } = StationData;
 
   return (
@@ -56,22 +60,18 @@ const MainTemplate = () => {
               descrip={descrip}
             />
           </div>
-          <p>{StationData.errorMassage}</p>
           <div className={styles.inputContainer}>
-            <p>{Errors.city && Errors.city}</p>
-            <p>{Errors.status}</p>
-
-            <p>{Error.citySearch && Error.citySearch}</p>
-
             <input
               className={styles.searchBox}
               type="text"
               name="citySearch"
               value={searchInput}
               onChange={(e) => setSearchInput(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && clickHandler(e)}
+              onKeyDown={(e) => e.key === "Enter" && searchClickHandler(e)}
             />
-            <button className={styles.searchButton} onClick={clickHandler}>
+            <button
+              className={styles.searchButton}
+              onClick={searchClickHandler}>
               <Icon icon="fluent:globe-search-24-filled" />
             </button>
           </div>
@@ -81,6 +81,7 @@ const MainTemplate = () => {
           <PlayerApp />
         </div>
       </div>
+      <ToastContainer position="bottom-center" />
     </div>
   );
 };

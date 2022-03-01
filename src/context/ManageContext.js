@@ -1,17 +1,13 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useState } from "react";
 import axios from "axios";
-import { apiValidate } from "../validate/validate";
-
 //Export the Weather Information Using Context.
 export const weatherContext = createContext();
 
 const ManageContext = (props) => {
-  const [Errors, setErrors] = useState({});
-
   const [WeatherData, setWeatherData] = useState({
     cityName: "Tehran",
+    cod: 200,
   });
-
   //Weather API
   const API = {
     BASE_URL: ` https://api.openweathermap.org/data/2.5/weather?q=${WeatherData.cityName}`,
@@ -21,21 +17,21 @@ const ManageContext = (props) => {
   if (WeatherData.cityName) {
     const getWeather = async () => {
       const response = await axios.get(`${API.BASE_URL}&appid=${API.apiKey}`);
-
       return response.data;
     };
     getWeather();
     const fetchAPI = async () => {
       setWeatherData(await getWeather());
+    
     };
     fetchAPI();
   }
-  useEffect(() => {
-    setErrors(apiValidate(WeatherData));
-  }, [WeatherData]);
-
   return (
-    <weatherContext.Provider value={{ WeatherData, setWeatherData, Errors }}>
+    <weatherContext.Provider
+      value={{
+        WeatherData,
+        setWeatherData,
+      }}>
       {props.children}
     </weatherContext.Provider>
   );
